@@ -1,0 +1,58 @@
+%V0.1
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{puripuri2100}
+
+% --------------------------パッケージ読み込み
+%TeXLive2018以降に含まれるもの
+\RequirePackage{ifthen}
+\RequirePackage{ifluatex,ifuptex}
+
+\ifthenelse{\boolean{luatex}}{
+  % LuaLaTeXでの設定
+  \RequirePackage{luatexja}
+  \RequirePackage{luatexja-ruby}
+  \RequirePackage{graphicx}
+  \RequirePackage{luatexja-fontspec}
+  \setmainjfont{KozMinPr6N-Regular.otf}
+  \setsansjfont{KozGoPr6N-Regular.otf}
+    \newcommand*{\purimcfont}[1][yumin.ttf]{\setmainjfont{#1}}
+    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setsansjfont{#1}}
+
+  \newcommand*{\purizw}{\zw}
+  \newcommand*{\purizh}{\zh}
+
+}{\ifthenelse{\boolean{upTeX}}{
+  % upLaTeXでの設定
+  \RequirePackage{pxrubrica}
+  \RequirePackage[hiresbb]{graphicx}
+  \RequirePackage[noalphabet]{pxchfon}
+  \setminchofont{KozMinPr6N-Regular.otf}
+  \setgothicfont{KozGoPr6N-Regular.otf}
+    \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
+    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+
+  \newcommand*{\purizw}{zw}
+  \newcommand*{\purizh}{zh}
+
+}{
+  % pLaTeXでの設定
+  \RequirePackage{pxrubrica}
+  \RequirePackage[hiresbb]{graphicx}
+  \RequirePackage[noalphabet]{pxchfon}
+  \setminchofont{KozMinPr6N-Regular.otf}
+  \setgothicfont{KozGoPr6N-Regular.otf}
+    \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
+    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+
+
+  \newcommand*{\purizw}{zw}
+  \newcommand*{\purizh}{zh}
+
+}}
+
+
+
+%--------------------------------------- all done
+\endinput
+%% EOF
