@@ -16,12 +16,15 @@
   \RequirePackage{luatexja-otf}
   \RequirePackage{graphicx}
   \RequirePackage[svgnames,x11names]{xcolor}
+  \RequirePackage[no-math]{fontspec}
+    \setmainfont[Ligatures=TeX]{TeX Gyre Termes}
   \RequirePackage{luatexja-fontspec}
   \setmainjfont{KozMinPr6N-Regular.otf}
   \setsansjfont{KozGoPr6N-Regular.otf}
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setmainjfont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setsansjfont{#1}}
   \RequirePackage{tikz}
+  \RequirePackage[pdfencoding=auto,colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
 
   \newcommand*{\purizw}{\zw}
   \newcommand*{\purizh}{\zh}
@@ -66,7 +69,13 @@
 \RequirePackage{geometry}
   \newcommand*{\purigeometry}[1][pass]{\geometry{#1}}
 \RequirePackage{scsnowman}
-\RequirePackage{here}
+\RequirePackage{float}
+\RequirePackage{musikui}
+\RequirePackage{url}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{wrapfig}
+\RequirePackage{overpic}
+\RequirePackage{longtable}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
