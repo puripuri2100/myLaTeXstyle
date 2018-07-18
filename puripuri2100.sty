@@ -3,8 +3,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{puripuri2100}
 
-% --------------------------パッケージ読み込み
-%TeXLive2018以降に含まれるもの
+% --------------------------パッケージ読み込み（TeXLive2018以降に含まれるもの）
+
+%-------------エンジン別読み込み
 \RequirePackage{ifthen}
 \RequirePackage{ifluatex,ifuptex}
 
@@ -12,6 +13,7 @@
   % LuaLaTeXでの設定
   \RequirePackage{luatexja}
   \RequirePackage{luatexja-ruby}
+  \RequirePackage{luatexja-otf}
   \RequirePackage{graphicx}
   \RequirePackage{luatexja-fontspec}
   \setmainjfont{KozMinPr6N-Regular.otf}
@@ -25,6 +27,7 @@
 }{\ifthenelse{\boolean{upTeX}}{
   % upLaTeXでの設定
   \RequirePackage{pxrubrica}
+  \RequirePackage[uplatex]{otf}
   \RequirePackage[hiresbb]{graphicx}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
@@ -38,6 +41,7 @@
 }{
   % pLaTeXでの設定
   \RequirePackage{pxrubrica}
+  \RequirePackage{otf}
   \RequirePackage[hiresbb]{graphicx}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
@@ -51,7 +55,16 @@
 
 }}
 
+%-----------------------------エンジン関係なしの読み込み
+\RequirePackage{lltjp-geometry}
+\RequirePackage[pass]{geometry}
+  \newcommand*{\purigeometry}[1][pass]{\usepackage[#1]{geometry}}
 
+%-----------------------------------------コマンドと環境の（再）定義
+
+\def\puritoday{
+{\number\year}/{\number\month}/{\number\day}
+}
 
 %--------------------------------------- all done
 \endinput
