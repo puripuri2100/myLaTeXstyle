@@ -92,7 +92,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{makeidx}
 \RequirePackage{bxtexlogo}
-\bxtexlogoimport{*,**}
+  \bxtexlogoimport{*,**}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
@@ -102,6 +102,110 @@
 pdftitle={#2},
 pdfauthor={#3},
 #1}}
+
+\newcounter{puri@date}
+\newcommand*{\nondate}{\setcounter{puri@date}{1}}
+
+\if@titlepage
+  \newcommand{\purimaketitle}{%
+    \begin{titlepage}%
+      \let\footnotesize\small
+      \let\footnoterule\relax
+      \let\footnote\thanks
+      \null\vfil
+      \begin{center}%
+        {\LARGE \@title \par}%
+        \vskip 1.5em
+        {\large\@subtitle \par}%
+        \vskip 3em%
+        {\large
+          \lineskip .75em
+          \begin{tabular}[t]{c}%
+            \@author
+          \end{tabular}\par}%
+        \vskip 1.5em
+        \ifnum\thepuri@date =1 \else
+          {\large \@date \par}%
+        \fi
+      \end{center}%
+      \par
+      \@thanks\vfil\null
+    \end{titlepage}%
+    \setcounter{footnote}{0}%
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
+    \global\let\@subtitle\@empty
+    \global\let\subtitle\relax
+  }%
+\else
+  \newcommand{\purimaketitle}{\par
+    \begingroup
+      \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+      \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+      \long\def\@makefntext##1{\advance\leftskip 3\purizw
+        \parindent 1\purizw\noindent
+        \llap{\@textsuperscript{\normalfont\@thefnmark}\hskip0.3\purizw}##1}%
+      \if@twocolumn
+        \ifnum \col@number=\@ne
+          \@maketitle
+        \else
+          \twocolumn[\@maketitle]%
+        \fi
+      \else
+        \newpage
+        \global\@topnum\z@  % Prevents figures from going at top of page.
+        \@maketitle
+      \fi
+      \plainifnotempty
+      \@thanks
+    \endgroup
+    \setcounter{footnote}{0}%
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
+    \global\let\@subtitle\@empty
+    \global\let\subtitle\relax
+  }
+  \def\@maketitle{%
+    \newpage\null
+    \vskip 2em
+    \begin{center}%
+      \let\footnote\thanks
+      {\LARGE \@title \par}%
+      \vskip 0.5em
+      {\large\@subtitle \par}%
+      \vskip 1.5em
+      {\large
+        \lineskip .5em
+        \begin{tabular}[t]{c}%
+          \@author
+        \end{tabular}\par}%
+      \vskip 1em
+      \ifnum\thepuri@date = 1 \else
+        {\large \@date}%
+      \fi
+    \end{center}%
+    \par\vskip 1.5em
+    \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
+  }
+\fi
+\long\def\subtitle#1{\long\gdef\@subtitle{#1}}
+
 
 %--------------------------------------- all done
 \endinput
