@@ -91,15 +91,17 @@
 \RequirePackage[tikz]{mdframed}
 \RequirePackage{enumitem}
 \RequirePackage{makeidx}
+\RequirePackage{bxtexlogo}
+\bxtexlogoimport{*,**}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
 \newcommand*{\puritoday}{{\number\year}/{\number\month}/{\number\day}}
 \newcommand*{\purihypersetup}[3][]{%
 \hypersetup{%
-pdftitle={#1},
-pdfauthor={#2},
-#3}}
+pdftitle={#2},
+pdfauthor={#3},
+#1}}
 
 %--------------------------------------- all done
 \endinput
