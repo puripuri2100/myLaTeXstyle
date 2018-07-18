@@ -14,12 +14,13 @@
   \RequirePackage{luatexja}
   \RequirePackage{luatexja-ruby}
   \RequirePackage{luatexja-otf}
-  \RequirePackage{graphicx}
+  \RequirePackage{graphicx,xcolor}
   \RequirePackage{luatexja-fontspec}
   \setmainjfont{KozMinPr6N-Regular.otf}
   \setsansjfont{KozGoPr6N-Regular.otf}
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setmainjfont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setsansjfont{#1}}
+  \RequirePackage{tikz}
 
   \newcommand*{\purizw}{\zw}
   \newcommand*{\purizh}{\zh}
@@ -28,12 +29,13 @@
   % upLaTeXでの設定
   \RequirePackage{pxrubrica}
   \RequirePackage[uplatex]{otf}
-  \RequirePackage[hiresbb]{graphicx}
+  \RequirePackage[dvipdfmx]{graphicx,xcolor}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
   \setgothicfont{KozGoPr6N-Regular.otf}
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+  \RequirePackage{tikz}
 
   \newcommand*{\purizw}{zw}
   \newcommand*{\purizh}{zh}
@@ -42,12 +44,13 @@
   % pLaTeXでの設定
   \RequirePackage{pxrubrica}
   \RequirePackage{otf}
-  \RequirePackage[hiresbb]{graphicx}
+  \RequirePackage[dvipdfmx]{graphicx,xcolor}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
   \setgothicfont{KozGoPr6N-Regular.otf}
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+  \RequirePackage{tikz}
 
 
   \newcommand*{\purizw}{zw}
@@ -57,8 +60,8 @@
 
 %-----------------------------エンジン関係なしの読み込み
 \RequirePackage{lltjp-geometry}
-\RequirePackage[pass]{geometry}
-  \newcommand*{\purigeometry}[1][pass]{\usepackage[#1]{geometry}}
+\RequirePackage{geometry}
+  \newcommand*{\purigeometry}[1][pass]{\geometry{#1}}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
