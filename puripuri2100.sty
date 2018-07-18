@@ -22,7 +22,9 @@
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setmainjfont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setsansjfont{#1}}
   \RequirePackage{tikz}
+  \RequirePackage{longtable}
   \RequirePackage[pdfencoding=auto,colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
+  \RequirePackage{arydshln}
 
   \newcommand*{\purizw}{\zw}
   \newcommand*{\purizh}{\zh}
@@ -39,6 +41,10 @@
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
   \RequirePackage{tikz}
+  \RequirePackage{longtable}
+  \RequirePackage[colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
+  \RequirePackage[dvipdfmx]{pxjahyper}
+  \RequirePackage{arydshln}
 
   \newcommand*{\purizw}{zw}
   \newcommand*{\purizh}{zh}
@@ -55,6 +61,10 @@
     \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
     \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
   \RequirePackage{tikz}
+  \RequirePackage{longtable}
+  \RequirePackage[colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
+  \RequirePackage[dvipdfmx]{pxjahyper}
+  \RequirePackage{arydshln}
 
 
   \newcommand*{\purizw}{zw}
@@ -71,9 +81,10 @@
 \RequirePackage{musikui}
 \RequirePackage{url}
 \RequirePackage{amsmath,amssymb}
+  \let\equation\gather
+  \let\endequation\endgather
 \RequirePackage{wrapfig}
 \RequirePackage{overpic}
-\RequirePackage{longtable}
 \RequirePackage{ascmac}
 \RequirePackage{tcolorbox}
   \tcbuselibrary{raster,skins}
@@ -83,7 +94,12 @@
 
 %-----------------------------------------コマンドと環境の（再）定義
 
-\def\puritoday{{\number\year}/{\number\month}/{\number\day}}
+\newcommand*{\puritoday}{{\number\year}/{\number\month}/{\number\day}}
+\newcommand*{\purihypersetup}[3][]{%
+\hypersetup{%
+pdftitle={#1},
+pdfauthor={#2},
+#3}}
 
 %--------------------------------------- all done
 \endinput
