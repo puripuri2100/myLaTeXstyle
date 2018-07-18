@@ -14,7 +14,8 @@
   \RequirePackage{luatexja}
   \RequirePackage{luatexja-ruby}
   \RequirePackage{luatexja-otf}
-  \RequirePackage{graphicx,xcolor}
+  \RequirePackage{graphicx}
+  \RequirePackage[svgnames,x11names]{xcolor}
   \RequirePackage{luatexja-fontspec}
   \setmainjfont{KozMinPr6N-Regular.otf}
   \setsansjfont{KozGoPr6N-Regular.otf}
@@ -29,7 +30,8 @@
   % upLaTeXでの設定
   \RequirePackage{pxrubrica}
   \RequirePackage[uplatex]{otf}
-  \RequirePackage[dvipdfmx]{graphicx,xcolor}
+  \RequirePackage[dvipdfmx]{graphicx}
+  \RequirePackage[dvipdfmx,svgnames,x11names]{xcolor}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
   \setgothicfont{KozGoPr6N-Regular.otf}
@@ -44,7 +46,8 @@
   % pLaTeXでの設定
   \RequirePackage{pxrubrica}
   \RequirePackage{otf}
-  \RequirePackage[dvipdfmx]{graphicx,xcolor}
+  \RequirePackage[dvipdfmx]{graphicx}
+  \RequirePackage[dvipdfmx,svgnames,x11names]{xcolor}
   \RequirePackage[noalphabet]{pxchfon}
   \setminchofont{KozMinPr6N-Regular.otf}
   \setgothicfont{KozGoPr6N-Regular.otf}
@@ -62,12 +65,12 @@
 \RequirePackage{lltjp-geometry}
 \RequirePackage{geometry}
   \newcommand*{\purigeometry}[1][pass]{\geometry{#1}}
+\RequirePackage{scsnowman}
+\RequirePackage{here}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
-\def\puritoday{
-{\number\year}/{\number\month}/{\number\day}
-}
+\def\puritoday{{\number\year}/{\number\month}/{\number\day}}
 
 %--------------------------------------- all done
 \endinput
