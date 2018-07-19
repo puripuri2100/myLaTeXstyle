@@ -239,19 +239,48 @@ pdfauthor={#3},
     \vskip 2em
     \begin{center}%
       \let\footnote\thanks
-      {\LARGE \@title \par}%
-      \vskip 0.5em
-      {\large\@subtitle \par}%
-      \vskip 1.5em
-      {\large
-        \lineskip .5em
-        \begin{tabular}[t]{c}%
-          \@author
-        \end{tabular}\par}%
-      \vskip 1em
+      \begin{tikzpicture}
+        \draw[line width = 1.6pt] (0.09\textwidth,0.12) -- (0.91\textwidth,0.12);
+        \draw[line width = 1pt] (0.1\textwidth,0) -- (0.9\textwidth,0);
+      \end{tikzpicture}
+      \begin{center}
+      \parbox{0.7\textwidth}{
+      \begin{center}
+      {\LARGE\@title \par}
+      \end{center}
+      }
+      \vskip 0.3em
+        \parbox{0.65\textwidth}{
+        \begin{center}
+        {\large\@subtitle \par}
+        \end{center}}
+      \end{center}
+      \vskip 0.3em
+        \begin{tikzpicture}
+        \draw[line width = 0.6pt] (0.15\textwidth,0.1) -- (0.85\textwidth,0.1);
+        \end{tikzpicture}
+      \vskip 0.2em
+      \parbox{0.5\textwidth}{\begin{center}
+        {\large
+          \lineskip .5em
+          \begin{tabular}[t]{c}%
+            \@author
+          \end{tabular}\par}%
+        \end{center}}
+
+        \begin{tikzpicture}
+        \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
+        \end{tikzpicture}
+
       \ifnum\thepuri@date = 1 \else
+      \parbox{0.5\textwidth}{\begin{center}
         {\large \@date}%
+        \end{center}}
       \fi
+      \begin{tikzpicture}
+        \draw[line width = 1pt] (0.1\textwidth,0.1) -- (0.9\textwidth,0.1);
+        \draw[line width = 1.7pt] (0.09\textwidth,0) -- (0.91\textwidth,0);
+      \end{tikzpicture}
     \end{center}%
     \par\vskip 1.5em
     \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
