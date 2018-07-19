@@ -1,4 +1,6 @@
 %V0.1
+\RequirePackage{expl3}
+\RequirePackage{xparse}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{puripuri2100}
@@ -93,6 +95,7 @@
 \RequirePackage{makeidx}
 \RequirePackage{bxtexlogo}
   \bxtexlogoimport{*,**}
+\RequirePackage[T1]{fontenc}
 
 %-----------------------------------------コマンドと環境の（再）定義
 
@@ -105,6 +108,10 @@ pdfauthor={#3},
 
 \newcounter{puri@date}
 \newcommand*{\nondate}{\setcounter{puri@date}{1}}
+\newcounter{puri@subtitle}
+\newcommand*{\nonsubtitle}{\setcounter{puri@subtitle}{1}}
+\newcounter{puri@author}
+\newcommand*{\nonsauthor}{\setcounter{puri@author}{1}}
 
 \if@titlepage
   \newcommand{\purimaketitle}{%
@@ -112,21 +119,67 @@ pdfauthor={#3},
       \let\footnotesize\small
       \let\footnoterule\relax
       \let\footnote\thanks
-      \null\vfil
-      \begin{center}%
-        {\LARGE \@title \par}%
-        \vskip 1.5em
-        {\large\@subtitle \par}%
-        \vskip 3em%
+      \null\vskip 0.15\textheight
+      \begin{center}
+        \begin{tikzpicture}
+            \draw[line width = 1.6pt] (0.09\textwidth,0.12) -- (0.91\textwidth,0.12);
+            \draw[line width = 1pt] (0.1\textwidth,0) -- (0.9\textwidth,0);
+        \end{tikzpicture}
+        \vskip 1.7em
+          \begin{center}
+            \parbox{0.7\textwidth}{
+              \begin{center}
+                \LARGE\@title \par
+              \end{center}}
+        \vskip 0.7em
+        \ifnum\thepuri@subtitle =1
+          \ifnum\thepuri@date = 1
+            {\large
+              \lineskip .75em
+              \begin{tabular}[t]{c}%
+                \@author
+              \end{tabular}\par}%
+          \else
+            \parbox{0.65\textwidth}{
+              \begin{center}
+                \large\@subtitle \par
+              \end{center}}
+          \fi
+        \else
+            \parbox{0.65\textwidth}{
+              \begin{center}
+                \large\@subtitle \par
+              \end{center}}
+        \fi
+          \end{center}
+        \vskip 1em
+          \begin{tikzpicture}
+            \draw[line width = 1pt] (0.1\textwidth,0.1) -- (0.9\textwidth,0.1);
+            \draw[line width = 1.7pt] (0.09\textwidth,0) -- (0.91\textwidth,0);
+          \end{tikzpicture}
+
+        \vskip 0.13\textheight
+
+          \begin{tikzpicture}
+            \draw[line width = 0.6pt] (0.15\textwidth,0.1) -- (0.85\textwidth,0.1);
+          \end{tikzpicture}
+
+          \vskip 0.2em
         {\large
           \lineskip .75em
           \begin{tabular}[t]{c}%
             \@author
           \end{tabular}\par}%
-        \vskip 1.5em
         \ifnum\thepuri@date =1 \else
+          \begin{tikzpicture}
+            \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
+          \end{tikzpicture}
+
           {\large \@date \par}%
         \fi
+        \begin{tikzpicture}
+          \draw[line width = 0.6pt] (0.15\textwidth,0.1) -- (0.85\textwidth,0.1);
+        \end{tikzpicture}
       \end{center}%
       \par
       \@thanks\vfil\null
@@ -155,14 +208,14 @@ pdfauthor={#3},
         \llap{\@textsuperscript{\normalfont\@thefnmark}\hskip0.3\purizw}##1}%
       \if@twocolumn
         \ifnum \col@number=\@ne
-          \@maketitle
+          \puri@maketitle
         \else
-          \twocolumn[\@maketitle]%
+          \twocolumn[\puri@maketitle]%
         \fi
       \else
         \newpage
         \global\@topnum\z@  % Prevents figures from going at top of page.
-        \@maketitle
+        \puri@maketitle
       \fi
       \plainifnotempty
       \@thanks
@@ -181,7 +234,7 @@ pdfauthor={#3},
     \global\let\@subtitle\@empty
     \global\let\subtitle\relax
   }
-  \def\@maketitle{%
+  \def\puri@maketitle{%
     \newpage\null
     \vskip 2em
     \begin{center}%
