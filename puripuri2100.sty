@@ -106,13 +106,12 @@ pdftitle={#2},
 pdfauthor={#3},
 #1}}
 
-\newcount\puri@date
-\newcommand*{\nondate}{\puri@date = 1}\newcount\puri@subtitle
-\newcommand*{\nonsubtitle}{\puri@subitle = 1}\newcount\puri@author
-\newcommand*{\nonauthor}{\puri@author = 1}
-\newcount\puri@date@author
-\puri@date@author = \puri@date
-\advance\puri@date@author by \puri@author
+\newcounter{puri@date}
+\newcommand*{\nondate}{\setcounter{puri@date}{1}}
+\newcounter{puri@subtitle}
+\newcommand*{\nonsubtitle}{\setcounter{puri@subtitle}{1}}
+\newcounter{puri@author}
+\newcommand*{\nonauthor}{\setcounter{puri@author}{1}}
 
 
 \if@titlepage
@@ -133,21 +132,26 @@ pdfauthor={#3},
               \begin{center}
                 \LARGE\@title \par
               \end{center}}
-        \vskip 0.7em
-        \ifnum\the\puri@subtitle =1
-          \ifnum\the\puri@date = 1
+        \ifnum\thepuri@subtitle =1
+          \ifnum\thepuri@date = 1
+            \ifnum\thepuri@author = 1
+              \vskip 1em
+            \else
+            \vskip 0.7em
             {\large
               \lineskip .75em
               \begin{tabular}[t]{c}%
                 \@author
               \end{tabular}\par}%
+            \fi
           \else
-            \parbox{0.65\textwidth}{
-              \begin{center}
-                \large\@subtitle \par
-              \end{center}}
+            \ifnum\thepuri@author = 1
+            \vskip 0.7em
+              {\large \@date \par}%
+            \else \fi
           \fi
         \else
+          \vskip 0.7em
             \parbox{0.65\textwidth}{
               \begin{center}
                 \large\@subtitle \par
@@ -167,7 +171,7 @@ pdfauthor={#3},
           \begin{tabular}[t]{c}%
             \@author
           \end{tabular}\par}%
-        \ifnum\the\puri@date =1 \else
+        \ifnum\thepuri@date =1 \else
           \begin{tikzpicture}
             \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
           \end{tikzpicture}
@@ -268,7 +272,7 @@ pdfauthor={#3},
         \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
         \end{tikzpicture}
 
-      \ifnum\the\puri@date = 1 \else
+      \ifnum\thepuri@date = 1 \else
       \parbox{0.5\textwidth}{\begin{center}
         {\large \@date}%
         \end{center}}
