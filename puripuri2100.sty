@@ -169,37 +169,43 @@ pdfauthor={#3},
         \ifnum\thepuri@author = 1
           \ifnum\thepuri@date = 1
           \else
-            \begin{tikzpicture}
-              \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
-            \end{tikzpicture}
+            \ifnum\thepuri@subtitle = 1
+            \else
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
 
-              \vskip 0.3em
+                \vskip 0.3em
 
-            {\large \@date \par}%
+              {\large \@date \par}%
 
-            \begin{tikzpicture}
-              \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
-            \end{tikzpicture}
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
+            \fi
           \fi
         \else
           \ifnum\thepuri@date = 1
-            \begin{tikzpicture}
-              \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
-            \end{tikzpicture}
+            \ifnum\thepuri@subtitle = 1
+            \else
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
 
-              \vskip 0.3em
+                \vskip 0.3em
 
-            \parbox{0.5\textwidth}{\begin{center}
-            {\large
-              \lineskip .75em
-              \begin{tabular}[t]{c}%
-                \@author
-              \end{tabular}\par}%
-              \end{center}}
+              \parbox{0.5\textwidth}{\begin{center}
+              {\large
+                \lineskip .75em
+                \begin{tabular}[t]{c}%
+                  \@author
+                \end{tabular}\par}%
+                \end{center}}
 
-            \begin{tikzpicture}
-              \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
-            \end{tikzpicture}
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
+            \fi
           \else
                 \parbox{0.5\textwidth}{\begin{center}
                   {\large
@@ -295,33 +301,99 @@ pdfauthor={#3},
       \end{center}
       }
       \vskip 0.3em
-        \parbox{0.65\textwidth}{
-        \begin{center}
-        {\large\@subtitle \par}
-        \end{center}}
+        \ifnum\thepuri@subtitle =1
+          \ifnum\thepuri@date = 1
+            \ifnum\thepuri@author = 1
+              \vskip 1em
+            \else
+            \vskip 0.7em
+            {\large
+              \lineskip .75em
+              \begin{tabular}[t]{c}%
+                \@author
+              \end{tabular}\par}%
+            \fi
+          \else
+            \ifnum\thepuri@author = 1
+            \vskip 0.7em
+              {\large \@date \par}%
+            \else \fi
+          \fi
+        \else
+          \vskip 0.7em
+            \parbox{0.65\textwidth}{
+              \begin{center}
+                \large\@subtitle \par
+              \end{center}}
+            \begin{tikzpicture}
+            \draw[line width = 0.6pt] (0.15\textwidth,0.1) -- (0.85\textwidth,0.1);
+            \end{tikzpicture}
+          \vskip 0.2em
+        \fi
       \end{center}
       \vskip 0.3em
-        \begin{tikzpicture}
-        \draw[line width = 0.6pt] (0.15\textwidth,0.1) -- (0.85\textwidth,0.1);
-        \end{tikzpicture}
-      \vskip 0.2em
-      \parbox{0.5\textwidth}{\begin{center}
-        {\large
-          \lineskip .5em
-          \begin{tabular}[t]{c}%
-            \@author
-          \end{tabular}\par}%
-        \end{center}}
+        \ifnum\thepuri@author = 1
+          \ifnum\thepuri@date = 1
+          \else
+            \ifnum\thepuri@subtitle = 1
+            \else
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
 
-        \begin{tikzpicture}
-        \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
-        \end{tikzpicture}
+                \vskip 0.3em
 
-      \ifnum\thepuri@date = 1 \else
-      \parbox{0.5\textwidth}{\begin{center}
-        {\large \@date}%
-        \end{center}}
-      \fi
+              {\large \@date \par}%
+
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
+            \fi
+          \fi
+        \else
+          \ifnum\thepuri@date = 1
+            \ifnum\thepuri@subtitle = 1
+            \else
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
+
+                \vskip 0.3em
+
+              \parbox{0.5\textwidth}{\begin{center}
+              {\large
+                \lineskip .75em
+                \begin{tabular}[t]{c}%
+                  \@author
+                \end{tabular}\par}%
+                \end{center}}
+
+              \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.2\textwidth,0) -- (0.8\textwidth,0);
+              \end{tikzpicture}
+            \fi
+          \else
+                \parbox{0.5\textwidth}{\begin{center}
+                  {\large
+                    \lineskip .75em
+                    \begin{tabular}[t]{c}%
+                      \@author
+                    \end{tabular}\par}%
+                \end{center}}
+
+                \begin{tikzpicture}
+                \draw[line width = 0.4pt] (0.3\textwidth,0) -- (0.7\textwidth,0);
+                \end{tikzpicture}
+
+                \vskip 0.2em
+
+                \parbox{0.5\textwidth}{\begin{center}
+                \large
+                \@date
+                \end{center}
+                }
+          \fi
+        \fi
       \begin{tikzpicture}
         \draw[line width = 1pt] (0.1\textwidth,0.1) -- (0.9\textwidth,0.1);
         \draw[line width = 1.7pt] (0.09\textwidth,0) -- (0.91\textwidth,0);
