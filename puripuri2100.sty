@@ -19,11 +19,11 @@
   \RequirePackage{graphicx}
   \RequirePackage[svgnames,x11names]{xcolor}
   \RequirePackage{luatexja-fontspec}
-  \setmainjfont{KozMinPr6N-Regular.otf}
-  \setsansjfont{KozGoPr6N-Regular.otf}
-    \newcommand*{\purimcfont}[1][yumin.ttf]{\setmainjfont{#1}}
-    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setsansjfont{#1}}
-  \RequirePackage{tikz}
+    \newcommand*{\purimcdefault}{KozMinPr6N-Regular.otf}
+    \newcommand*{\purigtdefault}{KozGoPr6N-Regular.otf}
+  \setmainjfont[BoldFont=\purigtdefault]{\purimcdefault}
+  \setsansjfont{\purigtdefault}
+    \newcommand*{\purijafont}[2]{\setmainjfont[BoldFont=#2]{#1}\setsansjfont{#2}}
   \RequirePackage{longtable}
   \RequirePackage[pdfencoding=auto,colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
   \RequirePackage{arydshln}
@@ -38,10 +38,11 @@
   \RequirePackage[dvipdfmx]{graphicx}
   \RequirePackage[dvipdfmx,svgnames,x11names]{xcolor}
   \RequirePackage[noalphabet]{pxchfon}
-  \setminchofont{KozMinPr6N-Regular.otf}
-  \setgothicfont{KozGoPr6N-Regular.otf}
-    \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
-    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+    \newcommand*{\purimcdefault}{KozMinPr6N-Regular.otf}
+    \newcommand*{\purigtdefault}{KozGoPr6N-Regular.otf}
+  \setminchofont{\purimcdefault}
+  \setgothicfont{\purigtdefault}
+    \newcommand*{\purijafont}[2]{\setminchofont{#1}\setgothicfont{#2}}
   \RequirePackage{tikz}
   \RequirePackage{longtable}
   \RequirePackage[colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
@@ -58,10 +59,11 @@
   \RequirePackage[dvipdfmx]{graphicx}
   \RequirePackage[dvipdfmx,svgnames,x11names]{xcolor}
   \RequirePackage[noalphabet]{pxchfon}
-  \setminchofont{KozMinPr6N-Regular.otf}
-  \setgothicfont{KozGoPr6N-Regular.otf}
-    \newcommand*{\purimcfont}[1][yumin.ttf]{\setminchofont{#1}}
-    \newcommand*{\purigtfont}[1][YuGothR.ttc]{\setgothicfont{#1}}
+    \newcommand*{\purimcdefault}{KozMinPr6N-Regular.otf}
+    \newcommand*{\purigtdefault}{KozGoPr6N-Regular.otf}
+  \setminchofont{\purimcdefault}
+  \setgothicfont{\purigtdefault}
+    \newcommand*{\purijafont}[2]{\setminchofont{#1}\setgothicfont{#2}}
   \RequirePackage{tikz}
   \RequirePackage{longtable}
   \RequirePackage[colorlinks=true,urlcolor=blue,linkcolor=black,filecolor=black]{hyperref}
