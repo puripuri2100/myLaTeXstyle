@@ -289,7 +289,6 @@ pdfauthor={#3},
   }
   \def\puri@maketitle{%
     \newpage\null
-    \vskip 2em
     \begin{center}%
       \let\footnote\thanks
       \begin{tikzpicture}
@@ -443,27 +442,35 @@ pdfauthor={#3},
 
 \RequirePackage{titlesec}
 
-\titleformat{\section}{
-\vspace{3em}
-{\titlerule[1.6pt]}
-\vspace{0.3em}
-{\titlerule[1pt]}\Large\bfseries}
+\titleformat{\section}{%
+\vspace{3em}%
+{\titlerule[1.6pt]}%
+\vspace{0.3em}%
+{\titlerule[1pt]}%
+\vspace{0.5em}%
+\Large\bfseries}%
 {\thesection}{12pt}{}%
-[{\titlerule[1pt]}
-\vspace{0.2em}
-{\titlerule[1.6pt]}]
+[\vspace{0.3em}%
+  {\titlerule[1pt]}%
+\vspace{0.2em}%
+{\titlerule[1.6pt]}%
+\vspace{1em}]
 
-\titleformat{\subsection}{\large\bfseries}
-{\vspace{2.5em}
+\titleformat{\subsection}{\large\bfseries}%
+{\vspace{2.5em}%
   \thesubsection}{12pt}{}%
-[{\titlerule[1pt]}
-\vspace{0.2em}
-{\titlerule[1.6pt]}]
+[\vspace{0.3em}%
+  {\titlerule[1pt]}%
+\vspace{0.2em}%
+{\titlerule[1.6pt]}%
+\vspace{1em}]
 
-\titleformat{\subsubsection}{\normalsize\bfseries}
-{\vspace{2em}
+\titleformat{\subsubsection}{\normalsize\bfseries}%
+{\vspace{2em}%
   \thesubsubsection}{12pt}{}%
-[{\titlerule[1.6pt]}]
+[\vspace{0.3em}%
+  {\titlerule[1.6pt]}%
+\vspace{1em}]
 %--------------------------------------- all done
 \endinput
 %% EOF
