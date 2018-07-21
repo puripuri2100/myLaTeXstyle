@@ -105,6 +105,10 @@
 pdftitle={#2},
 pdfauthor={#3},
 #1}}
+\newcommand{\puriat}[1]{\makeatletter #1\makeatother}
+%\newenvironment{puriat}{\makeatletter}{\makeatother}
+
+%-------------------------------maketitle辺り
 
 \newcounter{puri@date}
 \newcommand*{\nondate}{\setcounter{puri@date}{1}}
@@ -411,9 +415,35 @@ pdfauthor={#3},
     \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
   }
 \fi
-\long\def\subtitle#1{\long\gdef\@subtitle{#1}}
+\long\def\subtitle#1{\long\gdef\@subtitle{#1}
+\setcounter{\puri@date}{0}
+\setcounter{\puri@subtitle}{0}
+\setcounter{\puri@author}{0}}
+
+%------------------------------- sectionあたり
 
 
+%------------------------------ レイアウト設計
+\RequirePackage{fancyhdr}
+\newcommand{\purichead}{\chead[]{}}
+\newcommand{\purilhead}{\lhead[]{}}
+\newcommand{\purirhead}{\rhead[]{}}
+\newcommand{\puricfoot}{\cfoot[]{--- {\thepage} ---}}
+\newcommand{\purilfoot}{\lfoot[]{}}
+\newcommand{\purirfoot}{\rfoot[]{}}
+\pagestyle{fancy}
+  \purichead
+  \purilhead
+  \purirhead
+  \puricfoot
+  \purilfoot
+  \purirfoot
+    \renewcommand{\headrulewidth}{0pt}%ヘッダーラインを出さない
+    \renewcommand{\footrulewidth}{0pt}%フッターラインを出さない
+
+\renewcommand{\thesection}{\@arabic\c@section}
+\renewcommand{\thesubsection}{\@arabic\c@section-\@arabic\c@subsection}
+\renewcommand{\thesubsubsection}{\@arabic\c@section-\@arabic\c@subsection-\@arabic\c@subsubsection}
 %--------------------------------------- all done
 \endinput
 %% EOF
