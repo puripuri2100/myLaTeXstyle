@@ -50,6 +50,8 @@ XeLaTeXで通るものに関してはまだ考えていません。
 - makeidx
 - bxtexlogo
 - fontenc
+- titlesec
+- fancyhdr
 ---
 
 追加コマンドです。
@@ -79,6 +81,26 @@ LuaLaTeXと(u)pLaTeXの両方で通る全角の高さです。
 必須引数は2つで、オプション引数があります。
 必須引数の1つ目にはpdftitleを、2つ目にはpdfauthorを入れてください。
 オプション引数には`\hypersetup`で使うオプションを入れてください。
+
+- `\purichead`
+fancyhdrパッケージで使うコマンドである`\chead`を決めます。
+既定は`\chead[]{}`です。
+
+- `\purilhead`
+`\purichead`の`\lhead`版です。規定は`\lhead[]{}`です。
+
+- `\purirhead`
+`\purichead`の`\rhead`版です。規定は`\rhead[]{}`です。
+
+- `\puricfoot`
+fancyhdrパッケージで使うコマンドである`\cfoot`を決めます。
+既定は`\cfoot[--- {\thepage} ---]{--- {\thepage} ---}`です。
+
+- `\purilfoot`
+`\puricfoot`の`\lfoot`版です。規定は`\lfoot[]{}`です。
+
+- `\purirfoot`
+`\puricfoot`の`\rfoot`版です。規定は`\rfoot[]{}`です。
 ---
 
 titleとsectionのデザインを変更します（本来はパッケージではなく、クラスファイルの方で行うべきなのでしょうが）。
@@ -103,7 +125,7 @@ titleとsectionのデザインを変更します（本来はパッケージで�
 
 - `\purimaketitle`
 上記の`\subtitle`や`\nonauthor`等がきちんと通り、デザインを変更させるためのコマンドです。
-`\maketitle`を使うときちんとしたいつもどおりのタイトルデザインになります。
+`\maketitle`を使うときちんとしたいつもどおりのタイトルデザインになります（当然ながら`\subtitle`は使えません）。
 ---
 
 # 使用・LICENSE等に関して
