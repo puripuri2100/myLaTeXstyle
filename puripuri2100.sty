@@ -420,9 +420,6 @@ pdfauthor={#3},
 \setcounter{\puri@subtitle}{0}
 \setcounter{\puri@author}{0}}
 
-%------------------------------- sectionあたり
-
-
 %------------------------------ レイアウト設計
 \RequirePackage{fancyhdr}
 \newcommand{\purichead}{\chead[]{}}
@@ -441,9 +438,35 @@ pdfauthor={#3},
     \renewcommand{\headrulewidth}{0pt}%ヘッダーラインを出さない
     \renewcommand{\footrulewidth}{0pt}%フッターラインを出さない
 
+%------------------------------- sectionあたり
+
 \renewcommand{\thesection}{\@arabic\c@section}
 \renewcommand{\thesubsection}{\@arabic\c@section-\@arabic\c@subsection}
 \renewcommand{\thesubsubsection}{\@arabic\c@section-\@arabic\c@subsection-\@arabic\c@subsubsection}
+
+\RequirePackage{titlesec}
+
+\titleformat{\section}{
+\vspace{3em}
+{\titlerule[1.6pt]}
+\vspace{0.3em}
+{\titlerule[1pt]}\Large\bfseries}
+{\thesection}{12pt}{}%
+[{\titlerule[1pt]}
+\vspace{0.2em}
+{\titlerule[1.6pt]}]
+
+\titleformat{\subsection}{\large\bfseries}
+{\vspace{2.5em}
+  \thesubsection}{12pt}{}%
+[{\titlerule[1pt]}
+\vspace{0.2em}
+{\titlerule[1.6pt]}]
+
+\titleformat{\subsubsection}{\normalsize\bfseries}
+{\vspace{2em}
+  \thesubsubsection}{12pt}{}%
+[{\titlerule[1.6pt]}]
 %--------------------------------------- all done
 \endinput
 %% EOF
