@@ -1,0 +1,131 @@
+\documentclass[lualatex,ja=standard,a4paper]{bxjsarticle}
+\usepackage{puripuri2100}
+\begin{document}
+\title{\textsf{puripuri2100.sty}の使い方}
+\subtitle{～自作の{\LaTeX} Style～}
+\author{@puripuri2100}
+\date{\puritoday}
+\purimaketitle
+\thispagestyle{fancy}
+
+%\tableofcontent
+
+\section*{はじめに}
+このパッケージは、プリアンブルに書く設定等を肩代わりすることを目的として作成されました。
+
+デフォルトでいくつかのパッケージを読み込み、必要な設定を予め済ませます。
+
+そのため、ある程度の文書であればプリアンブルでこのパッケージの読み込みを行うだけで対応できます。
+
+管理はGitHubで行っています。
+\begin{itemize}
+\item \url{https://github.com/puripuri2100/myLaTeXstyle}
+\end{itemize}
+
+\section{使用想定環境}
+\subsection{\LaTeX 周りの環境}
+TeXLive2018以降のものでの使用が想定されています。
+
+TeXLive2018以降に含まれるパッケージを読み込んでいるため、TeXLive2017以前のものを使用するとエラーが出ます。
+その場合はCTAN等からダウンロードして配置してください。
+
+W32TeX等では確認していません。
+
+\subsection{エンジン}
+使用を想定しているエンジンは(u)\pLaTeX と\LuaLaTeX です。
+\XeLaTeX での使用は今の所一切想定していません。
+
+\subsection{クラス}
+使用を想定しているクラスはjs***とltjs***とbxjs***です。
+jlreqクラスの使用はまだ想定していませんが、将来的には対応したいと考えています。
+
+\section{読み込み}
+\verb|\usepackage{puripuri2100}|
+とプリアンブルに書くだけで読み込まれます。
+オプションはありません。
+
+\section{LICENSE}
+改変・再配布等は自由に行って構いません。また、その際に著作権の明記は一切必要ありません。
+
+しかし、これはあくまでも自分のために作成するものなので、これを使用することによる被害等に関しては一切責任を負いません。
+
+\section{読み込むパッケージ}
+このパッケージが読み込むパッケージです。これのすべてが無いと使えません。TeXLive2018以降であれば標準で揃っていると思います。ない場合のために、CTANのURLも書いておきます。
+
+\begin{longtable}{ll}
+expl3&\url{https://ctan.org/pkg/expl3}\\
+xparse&\url{https://ctan.org/pkg/xparse}\\
+ifthen&\url{https://ctan.org/pkg/ifthen}\\
+ifluatex&\url{https://ctan.org/pkg/ifluatex}\\
+ifuptex&\url{https://ctan.org/pkg/ifptex}\\
+luatexja&\url{https://ctan.org/pkg/luatexja}\\
+luatexja-ruby&\url{https://ctan.org/pkg/luatexja}\\
+luatexja-otf&\url{https://ctan.org/pkg/luatexja}\\
+graphicx&\url{https://ctan.org/pkg/graphicx}\\
+xcolor&\url{https://ctan.org/pkg/xcolor}\\
+luatexja-fontspec&\url{https://ctan.org/pkg/luatexja}\\
+tikz&\url{https://www.ctan.org/pkg/pgf}\\
+longtable&\url{https://ctan.org/pkg/longtable}\\
+hyperref&\url{https://ctan.org/pkg/hyperref}\\
+arydshln&\url{https://ctan.org/pkg/arydshln}\\
+pxrubrica&\url{https://ctan.org/pkg/pxrubrica}\\
+otf&\url{https://ctan.org/pkg/japanese-otf}\\
+pxchfon&\url{https://ctan.org/pkg/pxchfon}\\
+ltjp-geometry&\url{https://ctan.org/pkg/luatexja}\\
+geometry&\url{https://ctan.org/pkg/geometry}\\
+scsnowman&\url{https://ctan.org/pkg/scsnowman}\\
+float&\url{https://ctan.org/pkg/float}\\
+musikui&\url{https://ctan.org/pkg/musikui}\\
+url&\url{https://ctan.org/pkg/url}\\
+amsmath&\url{https://ctan.org/pkg/amsmath}\\
+amssymb&\url{https://ctan.org/pkg/amsmath}\\
+wrapfig&\url{https://ctan.org/pkg/wrapfig}\\
+overpic&\url{https://ctan.org/pkg/overpic}\\
+ascmac&\url{https://ctan.org/pkg/ascmac}\\
+tcolorbox&\url{https://ctan.org/pkg/tcolorbox}\\
+mdframed&\url{https://ctan.org/pkg/mdframed}\\
+enumitem&\url{https://ctan.org/pkg/enumitem}\\
+makeidx&\url{https://ctan.org/pkg/makeidx}\\
+bxtexlogo&\url{https://ctan.org/pkg/bxtexlogo}\\
+fontenc&\url{https://ctan.org/pkg/fontenc}\\
+titlesec&\url{https://ctan.org/pkg/titlesec}\\
+fancyhdr&\url{https://ctan.org/pkg/fancyhdr}\\
+\end{longtable}
+
+\section{追加するコマンド}
+このパッケージで新たに追加するコマンドです。
+\begin{longtable}{rp{30\purizw}}
+\verb|\purizw| & {\LuaLaTeX}と(u){\pLaTeX}の両方で通る全角幅です。\\
+\verb|\purizh| & {\LuaLaTeX}と(u){\pLaTeX}の両方で通る全角の高さです。\\
+\verb|\purijafont| & 日本語のフォントを変えるコマンドです。引数が2つで、1つ目は明朝体のフォントで2つ目がゴチック体のフォントを入れます。\\
+\verb|\purimcdefault|&明朝体のデフォルトのフォントです。標準ではKozMinPr6N-Regular.otfです。\\
+\verb|\purigtdefault|&ゴチック体のデフォルトのフォントです。規定はKozGoPr6N-Regular.otfです。\\
+\verb|\purigeometry|&オプション引数にgeometryパッケージで使うオプションを入れてください。 何も入力しないとpassになります。\\
+\verb|\purihypersetup|&必須引数は2つで、オプション引数があります。 必須引数の1つ目にはpdftitleを、2つ目にはpdfauthorを入れてください。 オプション引数には\verb|\hypersetup|で使うオプションを入れてください。\\
+\verb|\purichead|&fancyhdrパッケージで使うコマンドである\verb|\chead|を決めます。 既定は\verb|\chead[]{}|です。\\
+\verb|\purilhead|&\verb|\purichead|の\verb|\lhead|版です。規定は\verb|\lhead[]{}|です。\\
+\verb|\purirhead|&\verb|\purichead|の\verb|\rhead|版です。規定は\verb|\rhead[]{}|です。\\
+\verb|\puricfoot|&fancyhdrパッケージで使うコマンドである\verb|\cfoot|を決めます。 既定は\verb|\cfoot[--- {\thepage} ---]{--- {\thepage} ---}|です。\\
+\verb|\purilfoot|&\verb|\puricfoot|の\verb|\lfoot|版です。規定は\verb|\lfoot[]{}|です。\\
+\verb|\purirfoot|&\verb|\puricfoot|の\verb|\rfoot|版です。規定は\verb|\rfoot[]{}|です。
+\end{longtable}
+
+\section{titleとsectionのデザイン変更についてと追加コマンドについて}
+このパッケージでは、新たにtitleを出力するコマンドを追加した上で、そのデザインを通常のmaketitleから変更しています。
+そしてtitlesecパッケージを使用して、\verb|\section|と\verb|\subsection|と\verb|\subsubsection|のデザインを変更しています。
+機能としては通常のものと変わらないので問題はありません。
+
+新たに\verb|\purimaketitle|というコマンドを定義することで、title部分のデザイン変更を行いました。また、title関係でいくつかのコマンドを追加することで、選択の幅を広げました。
+具体的なコマンド名と、その役割は下にあげておきます。
+
+\begin{longtable}{rp{30\purizw}}
+\verb|\subtitle| & 名の通り、サブタイトルを出力します。引数は1つで、サブタイトルを入れてください。\\
+\verb|\nonsubtitle| & サブタイトルを出力したくないという時に書きます。場所は\verb|\subtitle|の直前あたりが丁度良いでしょう。\\
+\verb|\nonauthor| & 著者名を出力したくないという時に書きます。場所は\verb|\author|の直前あたりが丁度良いでしょう。\\
+\verb|\nondate| & 日付を出力したくないという時に書きます。場所は\verb|\date|の直前あたりが丁度良いでしょう。\\
+\verb|\purimaketitle| & デザインを変更し、上記のコマンドが使える\verb|\maketitle|です。普通の\verb|\maketitle|も使えますが、その場合には上記のtitle関係のコマンドが全て使えなくなります。\\
+\verb|\puritoday| & 今日の日付を出力するコマンドです。年/月/日という形式です。これは\verb|\purimaketitle|でも\verb|\maketitle|でも使えます。
+\end{longtable}
+
+他にこれといった変更は加えていないつもりですが、不具合を確認した場合は、修正を行うつもりです。
+\end{document}
